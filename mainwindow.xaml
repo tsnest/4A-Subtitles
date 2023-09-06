@@ -1,0 +1,65 @@
+<Window x:Class="_4A_Subtitles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_4A_Subtitles"
+        Closing="Window_Closing" Title="4A Engine | Localization | ReBuild by TSNest" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen" Icon="/demo.png">
+  <Grid Background="#1F1F1F">
+    <Grid Background="#1F1F1F" VerticalAlignment="Top" Height="32" Margin="10">
+      <Button Click="ImportAction_Click" Name="ImportAction" VerticalAlignment="Center"
+              HorizontalAlignment="Left" Cursor="Hand" Padding="8" Background="#383838" Foreground="#FAFAFA"
+              Width="120">Import Localization</Button>
+      <Button Click="ExportAction_Click" Name="ExportAction" VerticalAlignment="Center"
+              HorizontalAlignment="Left" Cursor="Hand" Padding="8" Background="#383838" Foreground="#FAFAFA"
+              Margin="125,0,0,0" RenderTransformOrigin="0.195,0.486">Export Localization</Button>
+    </Grid>
+    <Grid Margin="10,47,10,10">
+      <Grid Width="256" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <TextBox GotFocus="SearchText_GotFocus" Name="SearchText" Cursor="IBeam" Padding="8" Background="#383838"
+                 Foreground="#FAFAFA" HorizontalAlignment="Left" VerticalAlignment="Center" Width="198">Type here...</TextBox>
+        <Button Click="SearchAction_Click" Name="SearchAction" Cursor="Hand" Padding="8" Background="#383838"
+                Foreground="#FAFAFA" HorizontalAlignment="Right" VerticalAlignment="Center">Search</Button>
+      </Grid>
+      <Grid Width="256" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <Button Name="AddAction" Cursor="Hand" Padding="8" Background="#383838" Foreground="#FAFAFA"
+                Command="{Binding ShowWindowCommand}">Add Subtitle</Button>
+      </Grid>
+      <Grid Margin="0,42,0,0">
+        <DataGrid Name="PairsList" AutoGenerateColumns="false" Background="#383838" Foreground="#FAFAFA"
+                  Cursor="Hand" ItemsSource="{Binding Pairs}">
+          <DataGrid.CellStyle>
+            <Style TargetType="{x:Type DataGridCell}">
+              <Setter Property="Control.Background" Value="#212121"/>
+            </Style>
+          </DataGrid.CellStyle>
+          <DataGrid.RowStyle>
+            <Style TargetType="{x:Type DataGridRow}">
+              <Setter Property="Control.Background" Value="#212121"/>
+            </Style>
+          </DataGrid.RowStyle>
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Width="256" Binding="{Binding Name}">
+              <DataGridColumn.HeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                  <Setter Property="Control.Background" Value="#383838"/>
+                  <Setter Property="Control.Padding" Value="8"/>
+                </Style>
+              </DataGridColumn.HeaderStyle>
+            </DataGridTextColumn>
+            <!--old Width="356"-->
+            <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}">
+              <DataGridColumn.HeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                  <Setter Property="Control.Background" Value="#383838"/>
+                  <Setter Property="Control.Padding" Value="8"/>
+                </Style>
+              </DataGridColumn.HeaderStyle>
+            </DataGridTextColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </Grid>
+    </Grid>
+  </Grid>
+</Window>
